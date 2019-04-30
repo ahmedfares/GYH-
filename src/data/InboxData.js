@@ -1,0 +1,23 @@
+var InboxProfile = [
+{id: 1,url: require('../images/inbox-01.png'),
+ItemType:"Inbox",
+descAr:"تعاميم من الوزارة لشركة العمرة أو من شركة العمرة لوكلائها الخارجيين ",
+descrEn:"Tameems from the Ministry of Umrah Company or Umrah Company to its external agents"},
+{id: 6,url: require('../images/inbox-02.png'),
+ItemType:"Inbox",
+descAr:"المخالفات التي يتم تقييدها على شركة العمرة من قبل وزارة الحج والعمرة ",
+descrEn:"Violations that are restricted to Umrah by the Ministry of Hajj and Umrah"},
+{id: 7,url: require('../images/inbox-03.png'),
+ItemType:"Inbox",
+descAr:"المخالفات التي يتم تقييدها على الوكلاء الخارجيين من قبل وزارة الحج والعمرة ",
+descrEn:"Violations that are restricted to external agents by the Ministry of Hajj and Umrah"},
+{id: 8,url: require('../images/inbox-04.png'),
+ItemType:"Inbox",
+descAr:"رسائل من وزارة الحج والعمرة لشركات العمرة أو الوكلاء الخارجيين فيما يخص تنبيهات - تحذيرات ... الخ",
+descrEn:"Messages from the Ministry of Hajj and Umrah to Umrah companies or external agents regarding alerts, warnings, etc."},
+{id: 9,url: require('../images/inbox-05.png'),
+ItemType:"Inbox",
+descAr:"ملاحظات يتم التنبيه عليها من قبل وزارة الحج والعمرةلشركات العمرة وفي الأغلب يجب إتخاذ إجراءات حيالها ",
+descrEn:"Notes by The Ministry of Hajj and Umrah shall be alerted to Umrah companies and in most cases action shall be taken"},
+];
+module.exports = InboxProfile;
