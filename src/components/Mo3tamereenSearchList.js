@@ -17,6 +17,7 @@ export default class Mo3tamereenSearchListScreen extends Component<{}> {
         super(props);
         this.strings = new LocalizedStrings(user.words);
         this.strings.setLanguage(user.lang);
+        user.MutamerCnt = 20;
     }
 
     static navigationOptions = ({ navigation }) => {
@@ -60,12 +61,12 @@ export default class Mo3tamereenSearchListScreen extends Component<{}> {
                     : (<View>
                       <ActivityIndicator animating={!this.state.deals.Mutamers} style={{ marginTop: 400 }} color="#1E4276" size="large" />
                   </View>)}
-                {/* {(this.state.deals.Mutamers && this.state.deals.Mutamers.length > 0) && <Footer>
-                    <FooterTab style={{backgroundColor:'#323232',justifyContent:'space-between'}}>
-                            <Text style={{color:'#fff',fontSize:16}}>{this.strings.totalCnt}</Text>
-                            <Text style={{color:'#fff',fontSize:16}}>{this.state.totalCnt}</Text>
+                  {(this.state.deals.Mutamers && this.state.deals.Mutamers.length > 0) && <Footer>
+                    <FooterTab style={{backgroundColor:'#204677',justifyContent:'center',paddingTop:15}}>
+                            <Text style={{color:'#fff',fontSize:16}}>{this.strings.totalCnt} | </Text>
+                            <Text style={{color:'#fff',fontSize:16}}>{user.MutamerCnt} of {this.state.totalCnt}</Text>
                     </FooterTab>
-                </Footer>} */}
+                </Footer>} 
             </View>
         );
     };

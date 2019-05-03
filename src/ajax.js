@@ -91,7 +91,7 @@ async fetchInboxDetails (Type,pageNo,Read,lang){
           "ReadStatus": Read,
           "IsArabic": lang,
           "PageId": pageNo,
-          "PageLength": 10
+          "PageLength": 20
         }) 
     });
       let responseJson = await response.json();
@@ -123,7 +123,7 @@ async fetchDetailedVoucher (Id,pageNo,lang,
           "StatusId": Id,
           "IsArabic": lang,
           "PageId": pageNo,
-          "PageLength": 10,
+          "PageLength": 20,
           VoucherNumber:selectedVouchNo,
           PaymentStatus:selectedPayState,
           HideCancelled:selectedCancelledVouch,
@@ -206,7 +206,7 @@ async fetchSearchedMutamers(Id,pageNo,lang,MutamerName,CountryId,AgentId
             DepartureTo: DepartureTo,
             IsArabic: lang,
             PageId: pageNo,
-            PageLength: 6,
+            PageLength: 20,
             CountrysIds: countriesIds,
             AgentsIds: agentsIds
           }) 
@@ -259,7 +259,7 @@ async fetchDetailedAgent(pageNo,lang,AgentYear,AgentCountry,AgentId){
         body: JSON.stringify({
           "PageId": pageNo,
           "isArabic":lang,
-          "PageLength": 10,
+          "PageLength": 20,
           "Year": AgentYear,
           "CountryId": AgentCountry,
           "AgentId":AgentId

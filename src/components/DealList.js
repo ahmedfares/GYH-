@@ -56,7 +56,7 @@ class DealList extends  React.Component {
                 deals.Mutamers[i].key = deals.Mutamers[i].Id + "";
             }
             this.FlatListData = [...this.FlatListData, ...deals.Mutamers];
-
+            this.props.onMore();
         this.setState({ isFetching: false });
 
 
