@@ -33,7 +33,7 @@ class AgentList extends  React.Component {
         this.setState({ isFetching: true }, function() { this.getApiData() });
     }
     handleLoadMore = () => {
-        if (!user.lastPageTafweej) {
+        if (!user.lastPageAgent) {
             this.setState({ isFetching: true }, function() { 
             this.setState({ Page: this.state.Page + 1 },
                 () => {
@@ -46,14 +46,14 @@ class AgentList extends  React.Component {
     }
     makeRemoteRequest = async () => {
          //alert(this.state.Page);
-            const deals = await ajax.fetchDetailedTafweej(user.selectedTafweej, this.state.Page);
+            const deals = await ajax.fetchDetailedAgent(this.state.Page,(user.lang == 'ar'),user.selectedAgentYear,user.selectedAgentCountry,user.selectedAgentId);
                 
-                user.lastPageTafweej = deals.lastPage;
+                user.lastPageAgent = deals.lastPage;
            
-         for (var i = 0; i < deals.Tafweejs.length; i++) {
-                deals.Tafweejs[i].key = deals.Tafweejs[i].Id + "";
+         for (var i = 0; i < deals.Agents.length; i++) {
+                deals.Agents[i].key = deals.Agents[i].Id + "";
             }
-            this.FlatListData = [...this.FlatListData, ...deals.Tafweejs];
+            this.FlatListData = [...this.FlatListData, ...deals.Agents];
 
         this.setState({ isFetching: false });
 
@@ -61,11 +61,11 @@ class AgentList extends  React.Component {
         //alert(JSON.stringify(this.FlatListData.length,null,4));
     }
     async getApiData(){
-        const deals = await ajax.fetchDetailedTafweej(user.selectedTafweej, 1);
-        for (var i = 0; i < deals.Tafweejs.length; i++) {
-            deals.Tafweejs[i].key = deals.Tafweejs[i].Id + "";
+        const deals = await ajax.fetchDetailedAgent(1,(user.lang == 'ar'),user.selectedAgentYear,user.selectedAgentCountry,user.selectedAgentId);
+        for (var i = 0; i < deals.Agents.length; i++) {
+            deals.Agents[i].key = deals.Agents[i].Id + "";
         }
-        this.FlatListData = deals.Tafweejs;
+        this.FlatListData = deals.Agents;
         this.setState({ isFetching: false });
     }
 }

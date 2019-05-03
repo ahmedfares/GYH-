@@ -50,32 +50,32 @@ class GroupItem extends React.Component {
             <View style={styles.deal}>
                         {/* <Image source={{ uri: deal.media[0] }} style={styles.image} /> */}
                             <View style={styles.info}>
-                                <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
-                                    <View style={{ flex: 0.07 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#204677' }}></Icon></View>
-                                    <View style={{ flex: 0.24 }}><Text style={{color: '#204677',textAlign:'left',marginLeft:10}}>{this.strings.ID}: </Text></View>
-                                    <View style={{ flex: 0.69 }}><Text style={{textAlign:'left',marginLeft:10}}>{(deal.Id != null && deal.Id != null)?deal.Id:this.strings.NoData}</Text></View>
-                                </View>
 
-                                <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
-                                    <View style={{ flex: 0.07 }}><Icon ios='ios-person' android="md-person" style={{ fontSize: 20, color: '#204677' }}></Icon></View>
-                                    <View style={{ flex: 0.24 }}><Text style={{color: '#204677',textAlign:'left',marginLeft:10}}>{this.strings.Name}: </Text></View>
-                                    <View style={{ flex: 0.69 }}><Text style={{textAlign:'left',marginLeft:10}}>{(deal.Name != null && deal.Name != null)?deal.Name:this.strings.NoData}</Text></View>
-                                </View>
+                        <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
+                            <View style={{ flex: 0.1 }}>
+                                <Image source={require('../images/MutamerName.png')} style={{ height: '100%', width: '100%' }} />
+                            </View>
+                            <View style={{ flex: 0.9 }}><Text style={{ textAlign: 'left', marginLeft: 10 }}>{(deal.Name != null && deal.Name != '') ? deal.Name : this.strings.NoData}</Text></View>
+                        </View>
 
-                                <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
-                                    <View style={{ flex: 0.07 }}><Icon ios='ios-trending-up' android="md-trending-up" style={{ fontSize: 20, color: '#204677' }}></Icon></View>
-                                    <View style={{ flex: 0.24 }}><Text style={{color: '#204677',textAlign:'left',marginLeft:10}}>{this.strings.Status}: </Text></View>
-                                    <View style={{ flex: 0.69 }}><Text style={{textAlign:'left',marginLeft:10}}>{(deal.Status != null && deal.Status != null)?deal.Status:this.strings.NoData}</Text></View>
-                                </View>
+                        <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
+                            <View style={{ flex: 0.1 }}>
+                                <Image source={require('../images/MutamerAgent.png')} style={{ height: '100%', width: '100%' }} />
+                            </View>
+                            <View style={{ flex: 0.2 }}><Text style={{ color: '#204677', textAlign: 'left', marginLeft: 10 }}>{this.strings.Agent} </Text></View>
+                            <View style={{ flex: 0.7 }}><Text style={{ textAlign: 'left', marginLeft: 10 }}>{(deal.AgentName != null && deal.AgentName != '') ? deal.AgentName : this.strings.NoData}</Text></View>
+                        </View>
 
-                                <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
-                                    <View style={{ flex: 0.07 }}><Icon ios='ios-briefcase' android="md-briefcase" style={{ fontSize: 20, color: '#204677' }}></Icon></View>
-                                    <View style={{ flex: 0.24 }}><Text style={{color: '#204677',textAlign:'left',marginLeft:10}}>{this.strings.Agent}: </Text></View>
-                                    <View style={{ flex: 0.69 }}><Text style={{textAlign:'left',marginLeft:10}}>{(deal.AgentName != null && deal.AgentName != null)?deal.AgentName:this.strings.NoData}</Text></View>
-                                </View>
+                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                            <View style={{ flex: 0.1 }}>
+                                <Image source={require('../images/MutamerStatus.png')} style={{ height: '100%', width: '100%' }} />
+                            </View>
+                            <View style={{ flex: 0.2 }}><Text style={{ color: '#204677', textAlign: 'left', marginLeft: 10 }}>{this.strings.Status} </Text></View>
+                            <View style={{ flex: 0.7 }}><Text style={{ textAlign: 'left', marginLeft: 10 }}>{(deal.Status != null && deal.Status != null)?deal.Status:this.strings.NoData}</Text></View>
+                        </View>
 
                             </View>
-                            <View style={{flex:0.2}}>
+                            <View style={{flex:0.1}}>
                                     {/* {(this.state.userType == 3) && <PopoverTooltip
                       ref='tooltip1'
                       buttonComponent={
@@ -116,31 +116,61 @@ class GroupItem extends React.Component {
                             </View>
                       </View>
                       <View style={{flex:1}}>
-                      <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
-                                    <View style={{ flex: 0.33 }}><Text style={{color: '#204677',textAlign:'center',marginLeft:10}}>{this.strings.Agent} </Text></View>
-                                    <View style={{ flex: 0.33 }}><Text style={{color: '#204677',textAlign:'center',marginLeft:10}}>{this.strings.VoucherPaid} </Text></View>
-                                    <View style={{ flex: 0.33 }}><Text style={{color: '#204677',textAlign:'center',marginLeft:10}}>{this.strings.vouchNo}</Text></View>
+                      <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', paddingBottom: 10,height:40 }}>
+                          
+                            <View style={{ flex: 0.5, flexDirection: 'row', borderRightWidth: 1, borderRightColor: '#aaa', alignItems: 'center' }}>
+                                <View style={{ flex: 0.2 }}>
+                                    <Image source={require('../images/ProgramNum.png')} style={{ height: '100%', width: '100%' }} />
                                 </View>
+                                <View style={{ flex: 0.47 }}><Text style={{ color: '#204677', textAlign: 'left', marginLeft: 10 , fontSize: 12}}>{this.strings.PNO} </Text></View>
+                                <View style={{ flex: 0.33 }}><Text style={{ textAlign: 'left', marginLeft: 5, fontSize: 11 }}>{(deal.Id != null && deal.Id != '') ? deal.PackageNo : this.strings.NoData}</Text></View>
+                            </View>
+                           
+                            <View style={{ flex: 0.5, flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={{ flex: 0.2 }}>
+                                    <Image source={require('../images/MutamerNum.png')} style={{ height: '100%', width: '100%', marginLeft: 5 }} />
+                                </View>
+                                <View style={{ flex: 0.4 }}><Text style={{ color: '#204677', textAlign: 'left', marginLeft: 10, fontSize: 12 }}>{this.strings.GID} </Text></View>
+                                <View style={{ flex: 0.4 }}><Text style={{ textAlign: 'left', marginLeft: 10, fontSize: 11 }}>{(deal.Id != null && deal.Id != '') ? deal.Id : this.strings.NoData}</Text></View>
+                            </View>
 
-                                <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
-                                    <View style={{ flex: 0.33 }}><Text style={{textAlign:'center',marginLeft:10}}>{(deal.AgentId != null&& deal.AgentId != null)?deal.AgentId:this.strings.NoData}</Text></View>
-                                    <View style={{ flex: 0.33 }}><Text style={{textAlign:'center',marginLeft:10}}>{(deal.VoucherPaid != '' && deal.VoucherPaid != null)?deal.VoucherPaid:this.strings.NoData}</Text></View>
-                                    <View style={{ flex: 0.33 }}><Text style={{textAlign:'center',marginLeft:10}}>{(deal.VoucherId != null && deal.VoucherId != null)?deal.VoucherId:this.strings.NoData}</Text></View>
-                                </View>
+                        </View>
 
-                                <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
-                                    <View style={{ flex: 0.25 }}><Text style={{color: '#204677',textAlign:'center',marginLeft:10}}>{this.strings.Adults} </Text></View>
-                                    <View style={{ flex: 0.25 }}><Text style={{color: '#204677',textAlign:'center',marginLeft:10}}>{this.strings.Child} </Text></View>
-                                    <View style={{ flex: 0.25 }}><Text style={{color: '#204677',textAlign:'center',marginLeft:10}}>{this.strings.Infant}</Text></View>
-                                    <View style={{ flex: 0.25 }}><Text style={{color: '#204677',textAlign:'center',marginLeft:10}}>{this.strings.totalCnt}</Text></View>
-                                </View>
+                    <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10,height:40 }}>
+                        <View style={{ flex: 0.25,flexDirection:'row', borderRightWidth: 1, borderRightColor: '#aaa',alignItems:'center' }}>
+                            <View style={{ flex: 0.5 }}>
+                                <Image source={require('../images/Adult.png')} style={{ height: '100%', width: '100%', marginLeft: 5 }} />
+                            </View>
+                            <View style={{ flex: 0.5 }}>
+                                <Text style={{ textAlign: 'center', marginLeft: 10 }}>{(deal.Adult != null && deal.Adult != null) ? deal.Adult : this.strings.NoData}</Text>
+                            </View>
+                        </View>
+                        <View style={{ flex: 0.25,flexDirection:'row', borderRightWidth: 1, borderRightColor: '#aaa',alignItems:'center' }}>
+                            <View style={{ flex: 0.5 }}>
+                                <Image source={require('../images/Child.png')} style={{ height: '100%', width: '100%', marginLeft: 5 }} />
+                            </View>
+                            <View style={{ flex: 0.5 }}>
+                                <Text style={{ textAlign: 'center', marginLeft: 10 }}>{(deal.Child != null && deal.Child != null) ? deal.Child : this.strings.NoData}</Text>
+                            </View>
+                        </View>
+                        <View style={{ flex: 0.25,flexDirection:'row', borderRightWidth: 1, borderRightColor: '#aaa',alignItems:'center' }}>
+                            <View style={{ flex: 0.5 }}>
+                                <Image source={require('../images/Infant.png')} style={{ height: '100%', width: '100%', marginLeft: 5 }} />
+                            </View>
+                            <View style={{ flex: 0.5 }}>
+                                <Text style={{ textAlign: 'center', marginLeft: 10 }}>{(deal.Infant != null && deal.Infant != null) ? deal.Infant : this.strings.NoData}</Text>
+                            </View>
+                        </View>
+                        <View style={{ flex: 0.25,flexDirection:'row', borderRightWidth: 1, borderRightColor: '#aaa',alignItems:'center' }}>
+                            <View style={{ flex: 0.5 }}>
+                                <Image source={require('../images/totalFamily.png')} style={{ height: '100%', width: '100%', marginLeft: 5 }} />
+                            </View>
+                            <View style={{ flex: 0.5 }}>
+                                <Text style={{ textAlign: 'center', marginLeft: 10 }}>{(deal.Total != null && deal.Total != null) ? deal.Total : this.strings.NoData}</Text>
+                            </View>
+                        </View>
+                    </View>
 
-                                <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
-                                    <View style={{ flex: 0.25 }}><Text style={{textAlign:'center',marginLeft:10}}>{(deal.Adult != null&& deal.Adult != null)?deal.Adult:this.strings.NoData}</Text></View>
-                                    <View style={{ flex: 0.25 }}><Text style={{textAlign:'center',marginLeft:10}}>{(deal.Child != null && deal.Child != null)?deal.Child:this.strings.NoData}</Text></View>
-                                    <View style={{ flex: 0.25 }}><Text style={{textAlign:'center',marginLeft:10}}>{(deal.Infant!= null && deal.Infant != null)?deal.Infant:this.strings.NoData}</Text></View>
-                                    <View style={{ flex: 0.25 }}><Text style={{textAlign:'center',marginLeft:10}}>{(deal.Total != null && deal.Total != null)?deal.Total:this.strings.NoData}</Text></View>
-                                </View>
                       </View>
                         </View>
         );
@@ -162,7 +192,7 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: '#fff',
         color: '#000',
-        flex: 0.8
+        flex: 0.9
     }
 });
 

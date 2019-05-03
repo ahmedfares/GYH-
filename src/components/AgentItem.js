@@ -17,7 +17,7 @@ class AgentItem extends React.Component {
         const { deal } = this.props;
         return (
             <TouchableOpacity onPress={this.handlePress} style={styles.deal}>
-                <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 0 }}>
+                <View style={{ flex: 1, flexDirection: 'row',marginLeft:-10 }}>
                     <View style={{ flex: 0.1 }}><Image source={require('../images/icon-01.png')} style={{ width: 25, height: 25, padding: 5, marginLeft: 15 }} /></View>
                     <View style={{ flex: 0.9 }}><Text style={{ textAlign: 'left', marginLeft: 10, marginTop: 3 }}>{deal.Agent}</Text></View>
                 </View>
