@@ -62,7 +62,7 @@ export default class Mo3tamereenListScreen extends Component<{}> {
           deals.Mutamers[i].key = deals.Mutamers[i].Id+"";
         }
         this.setState({ deals });
-        
+         
     }
     setCurrentDeal = (dealId) => {
         user.Mutamer = this.state.deals.Mutamers.find(x=>x.Id == dealId);
