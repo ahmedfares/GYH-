@@ -4,7 +4,7 @@ import {
     AsyncStorage, ImageBackground, ActivityIndicator, Image,Switch
 } from 'react-native';
 import { Container, Header } from 'native-base';
-import { PrepareScreen } from '../ScreenNames/ScreenNames';
+import { PrepareScreen, MainScreen } from '../ScreenNames/ScreenNames';
 import Toast, { DURATION } from 'react-native-easy-toast';
 import profile from "../data/ProfileData";
 import LocalizedStrings from 'react-native-localization';
@@ -125,8 +125,7 @@ export default class Login extends Component<{}> {
                 this.setState({ showLoading: false });
                 if(res.userName != null)
                     {
-                        user.currentPage = "MainScreen";
-                        this.props.navigation.navigate(PrepareScreen);
+                       
                         this.saveToken(res);                     
                     }
                     else
@@ -151,6 +150,12 @@ export default class Login extends Component<{}> {
             user.ENName = res.DisplayEnglishName;
             user.Details = res;
             await AsyncStorage.setItem('userType', res.Type + '');
+            await AsyncStorage.setItem('remember','true');
+             user.currentPage = "MainScreen";
+            if (user.loggedOut)
+                this.props.navigation.navigate(MainScreen);
+            else
+                this.props.navigation.navigate(PrepareScreen);
         } catch (error) {
             // Error saving data
         }

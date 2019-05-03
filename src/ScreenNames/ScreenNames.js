@@ -2,7 +2,7 @@ const LoginScreen = "LoginScreen";
 const LangScreen = "LangScreen";
 const LanguageScreen = "LanguageScreen";
 const MainScreen = "MainScreen";
-const LoadingScreen = "LoadingScreen";
+const LoadScreen = "LoadScreen";
 const PrepareScreen = "PrepareScreen";
 const Mo3tamereenScreen = "Mo3tamereenScreen";
 const TafweejScreen = "TafweejScreen";
@@ -32,7 +32,7 @@ const UNReadInboxDetailsScreen = "UNReadInboxDetailsScreen";
 const GroupsSearchListScreen = "GroupsSearchListScreen";
 
 export {
-    LoadingScreen,
+    LoadScreen,
     MainScreen,
     Mo3tamereenScreen,
     TafweejScreen,

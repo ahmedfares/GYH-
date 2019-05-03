@@ -12,6 +12,7 @@ class DealItem extends  React.Component {
         super(props);
         this.strings = new LocalizedStrings(user.words);
         this.strings.setLanguage(user.lang);
+        this.Status = JSON.stringify(this.props.deal.Status);
     }
     render(){
         const { deal} = this.props;
@@ -19,23 +20,42 @@ class DealItem extends  React.Component {
             <TouchableOpacity onPress={this.handlePress} style={styles.deal}>
             {/* <Image source={{ uri: deal.media[0] }} style={styles.image} /> */}
                 <View style={styles.info}>
+                
                     <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
+                        <View style={{ flex: 0.1 }}>
+                        <Image source={require('../images/MutamerName.png')} style={{ height: '100%', width: '100%' }} />
+                        </View>
+                        <View style={{ flex: 0.9 }}><Text style={{textAlign:'left',marginLeft:10}}>{(deal.Name != null && deal.Name != '')?deal.Name:this.strings.NoData}</Text></View>
+                    </View>
+
+                    <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
+                        <View style={{ flex: 0.1 }}>
+                        <Image source={require('../images/MutamerStatus.png')} style={{ height: '100%', width: '100%' }} />
+                        </View>
+                        <View style={{ flex: 0.2 }}><Text style={{color: '#204677',textAlign:'left',marginLeft:10}}>{this.strings.Status} </Text></View>
+                        <View style={{ flex: 0.7 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.Status.substring(1,30)}</Text></View>
+                    </View>
+
+                    <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
+                        <View style={{flex:0.5}}>
+
                         <View style={{ flex: 0.07 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#204677' }}></Icon></View>
                         <View style={{ flex: 0.22 }}><Text style={{color: '#204677',textAlign:'left',marginLeft:10}}>{this.strings.ID} </Text></View>
-                        <View style={{ flex: 0.71 }}><Text style={{textAlign:'left',marginLeft:10}}>{(deal.Id != null && deal.Id != '')?deal.Id:this.strings.NoData}</Text></View>
-                    </View>
+                        <View style={{ flex: 0.71 }}><Text style={{textAlign:'left',marginLeft:10}}>{(deal.Id != null && deal.Id != '')?deal.PassportNo:this.strings.NoData}</Text></View>
+                  
+                        </View>
+                        <View style={{flex:0.5}}>
+                        
+                        <View style={{ flex: 0.07 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#204677' }}></Icon></View>
+                        <View style={{ flex: 0.22 }}><Text style={{color: '#204677',textAlign:'left',marginLeft:10}}>{this.strings.ID} </Text></View>
+                        <View style={{ flex: 0.71 }}><Text style={{textAlign:'left',marginLeft:10}}>{(deal.Id != null && deal.Id != '')?deal.PassportNo:this.strings.NoData}</Text></View>
+                        </View>
+                        
+                      </View>
 
-                    <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
-                        <View style={{ flex: 0.07 }}><Icon ios='ios-person' android="md-person" style={{ fontSize: 20, color: '#204677' }}></Icon></View>
-                        <View style={{ flex: 0.22 }}><Text style={{color: '#204677',textAlign:'left',marginLeft:10}}>{this.strings.Name} </Text></View>
-                        <View style={{ flex: 0.71 }}><Text style={{textAlign:'left',marginLeft:10}}>{(deal.Name != null && deal.Name != '')?deal.Name:this.strings.NoData}</Text></View>
-                    </View>
+                    
 
-                    <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
-                        <View style={{ flex: 0.07 }}><Icon ios='ios-trending-up' android="md-trending-up" style={{ fontSize: 20, color: '#204677' }}></Icon></View>
-                        <View style={{ flex: 0.22 }}><Text style={{color: '#204677',textAlign:'left',marginLeft:10}}>{this.strings.Status} </Text></View>
-                        <View style={{ flex: 0.71 }}><Text style={{textAlign:'left',marginLeft:10}}>{JSON.stringify(deal.Status)}</Text></View>
-                    </View>
+                    
 
                     <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
                         <View style={{ flex: 0.07 }}><Icon ios='ios-briefcase' android="md-briefcase" style={{ fontSize: 20, color: '#204677' }}></Icon></View>
@@ -44,7 +64,7 @@ class DealItem extends  React.Component {
                     </View>
 
                 </View>
-                <View style={{flex:0.15}}>
+                <View style={{flex:0.1}}>
                 <View style={{flex:1,flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
                     <View>
                     {(user.defaultLang == 'ar') && <Image source={ require('../images/back.png')}/>}
@@ -71,7 +91,7 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: '#fff',
         color:'#000',
-        flex:0.85
+        flex:0.9
       }
 });
 

@@ -124,48 +124,33 @@ export default class Mo3tamerSearchScreen extends Component<{}> {
     render() {
 
         return (
-            <Container>
+            <Container scrollEnabled={false}>
                 <Content scrollEnabled={false}>
-                    <View style={{marginTop:20,marginBottom:100}}>
+                    <View style={{marginTop:0,marginBottom:0}}>
                         <Item style={styles.Input}>
-                            <Input value={this.state.Mutamers} placeholder={this.strings.Mutamer} placeholderTextColor='#204677' color='#204677'
+                            <Input value={this.state.Mutamers} placeholder={this.strings.Name} placeholderTextColor='#204677' color='#204677'
                                 onChangeText={(Mutamers) => { this.setState({ Mutamers }) }}
                                 style={{ color: '#204677', marginLeft: 0,textAlign:'left' }} />
-                            <TouchableOpacity onPress={() => {
-                                Keyboard.dismiss();
-                                 }}><Icon active name='search' style={{ color: '#204677' }} /></TouchableOpacity>
                         </Item>
                         <Item style={styles.Input}>
                             <Input value={this.state.Passport} placeholder={this.strings.Passport} placeholderTextColor='#204677' color='#204677'
                                 onChangeText={(Passport) => { this.setState({ Passport }) }}
                                 style={{ color: '#204677', marginLeft: 0,textAlign:'left' }} />
-                            <TouchableOpacity onPress={() => {
-                                Keyboard.dismiss();
-                                 }}><Icon active name='search' style={{ color: '#204677' }} /></TouchableOpacity>
                         </Item>
                         <Item style={styles.Input}>
                             <Input value={this.state.Mofa} placeholder={this.strings.Mofa} placeholderTextColor='#204677' color='#204677'
                                 onChangeText={(Mofa) => { this.setState({ Mofa }) }}
                                 style={{ color: '#204677', marginLeft: 0,textAlign:'left' }} />
-                            <TouchableOpacity onPress={() => {
-                                Keyboard.dismiss();
-                                 }}><Icon active name='search' style={{ color: '#204677' }} /></TouchableOpacity>
                         </Item>
                         <Item style={styles.Input}>
                             <Input value={this.state.Moi} placeholder={this.strings.MoiNumber} placeholderTextColor='#204677' color='#204677'
                                 onChangeText={(Moi) => { this.setState({ Moi }) }}
                                 style={{ color: '#204677', marginLeft: 0,textAlign:'left' }} />
-                            <TouchableOpacity onPress={() => {
-                                Keyboard.dismiss();
-                                 }}><Icon active name='search' style={{ color: '#204677' }} /></TouchableOpacity>
                         </Item>
                         <Item style={styles.Input}>
                             <Input value={this.state.Group} placeholder={this.strings.Group} placeholderTextColor='#204677' color='#204677'
                                 onChangeText={(Group) => { this.setState({ Group }) }}
                                 style={{ color: '#204677', marginLeft: 0 ,textAlign:'left'}} />
-                            <TouchableOpacity onPress={() => {
-                                Keyboard.dismiss();
-                                 }}><Icon active name='search' style={{ color: '#204677' }} /></TouchableOpacity>
                         </Item>
                         <View style={{ paddingHorizontal: 10,marginBottom:10,textAlign:'center' }}>
                             <Dropdown label={this.strings.Country}  itemCount={5}
@@ -247,7 +232,8 @@ export default class Mo3tamerSearchScreen extends Component<{}> {
                         <TouchableOpacity onPress={() => {
                                 this.searchMo3tamers(this.state.Mutamers,
                                     (this.state.selectedCountry)?this.state.countriesData.find(x => x.value == this.state.selectedCountry).Id:null,
-                                    (this.state.selectedAgent)?this.state.agentsData.find(x => x.value == this.state.selectedAgent).Id:null);
+                                    (this.state.selectedAgent)?this.state.agentsData.find(x => x.value == this.state.selectedAgent).Id:null,
+                                    this.state.Passport,this.state.Mofa,this.state.Moi,this.state.Group)
                             }} style={styles.buttonContainer}>
                                 <Text style={styles.buttonText}>{this.strings.Search}</Text>
                             </TouchableOpacity>

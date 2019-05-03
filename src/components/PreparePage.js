@@ -5,7 +5,7 @@ import {LoginScreen,MainScreen} from '../ScreenNames/ScreenNames';
 import user from '../data/userLanguage';
 import LocalizedStrings from 'react-native-localization';
 
-export default class App2 extends Component<Props> {
+export default class Prepare extends Component<Props> {
   
   constructor(props) {
     super(props);

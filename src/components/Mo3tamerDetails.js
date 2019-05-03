@@ -27,6 +27,7 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
     static navigationOptions = ({ navigation }) => {
         const { state } = navigation
         return {
+            title: (user.lang == 'ar')?'تفاصيل المعتمر':'Mutamer Details',
             headerRight: <View>
             <TouchableOpacity
               onPress={() => state.params.handleSave()}
@@ -41,7 +42,10 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
         return (
             <View style={styles.accordionHeader2}>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                    <Icon name={item.iconName} style={{ fontSize: 25, color: '#204677', flex: 0.1 }} />
+                    {item.iconName != 'jet' && <Icon name={item.iconName} style={{ fontSize: 25, color: '#204677', flex: 0.1 }} />}
+                    {item.iconName == 'jet' && <Image
+                            source={require('../images/Groups_17.png')} style={{ height: 30, width: 30, flex:0.1 }} />
+                            }
                     <Text style={{ fontSize: 17, color: '#204677', flex: 0.9 }}>
                         {" "}{item.title}
                     </Text>
@@ -158,25 +162,25 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
                     <View style={{ flex: 0.1 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
                     <View style={{ flex: 0.4 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.ID} </Text></View>
-                    <View style={{ flex: 0.3 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.MofaNo)}</Text></View>
+                    <View style={{ flex: 0.4 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.MofaNo)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
                     <View style={{ flex: 0.1 }}><Icon ios='ios-calendar' android="md-calendar" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
                     <View style={{ flex: 0.4 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Date} </Text></View>
-                    <View style={{ flex: 0.3 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.MofaDate)}</Text></View>
+                    <View style={{ flex: 0.4 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.MofaDate)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
                     <View style={{ flex: 0.1 }}><Icon ios='ios-calendar' android="md-calendar" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
                     <View style={{ flex: 0.4 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.VisaStampDate} </Text></View>
-                    <View style={{ flex: 0.3 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.VisaStampDate)}</Text></View>
+                    <View style={{ flex: 0.4 }}><Text style={{textAlign:'left'}}>{(user.Mutamer.VisaStampDate == 0)?this.strings.notArrived:this.replaceNoData(user.Mutamer.VisaStampDate)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
                     <View style={{ flex: 0.1 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
                     <View style={{ flex: 0.4 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.VisaNumber} </Text></View>
-                    <View style={{ flex: 0.3 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.VisaNumber)}</Text></View>
+                    <View style={{ flex: 0.4 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.VisaNumber)}</Text></View>
                 </View>
 
             </View>}
@@ -333,6 +337,10 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
                     <Header androidStatusBarColor="#183B65" style={{ display: 'none' }} />
 
                     <Content style={{ borderBottomColor: '#FFF' }}>
+                    
+                    {!this.state.showLoading && user.Mutamer.Image && <View style={{flex:1,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+                        <Image  source={{uri: user.Mutamer.Image}} style={{width:70,height:70,borderRadius:35,marginTop:10,marginBottom:1}}/>
+                    </View>}
                         {!this.state.showLoading && <Accordion
                             dataArray={this.dataArray}
                             animation={true}

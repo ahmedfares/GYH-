@@ -76,7 +76,7 @@ class GroupItem extends React.Component {
 
                             </View>
                             <View style={{flex:0.2}}>
-                                    {(this.state.userType == 3) && <PopoverTooltip
+                                    {/* {(this.state.userType == 3) && <PopoverTooltip
                       ref='tooltip1'
                       buttonComponent={
                         <View style={{paddingTop:10,paddingBottom:0,width:50,justifyContent:'center',alignItems:'center'}}>
@@ -112,13 +112,13 @@ class GroupItem extends React.Component {
                       labelContainerStyle={{backgroundColor: '#204666', width: 180, alignItems: 'center'}}
                       labelStyle={{color:'#fff'}}
                       lang={user.lang}
-                      />}
+                      />} */}
                             </View>
                       </View>
                       <View style={{flex:1}}>
                       <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 10 }}>
                                     <View style={{ flex: 0.33 }}><Text style={{color: '#204677',textAlign:'center',marginLeft:10}}>{this.strings.Agent} </Text></View>
-                                    <View style={{ flex: 0.33 }}><Text style={{color: '#204677',textAlign:'center',marginLeft:10}}>{this.strings.vouchPage} </Text></View>
+                                    <View style={{ flex: 0.33 }}><Text style={{color: '#204677',textAlign:'center',marginLeft:10}}>{this.strings.VoucherPaid} </Text></View>
                                     <View style={{ flex: 0.33 }}><Text style={{color: '#204677',textAlign:'center',marginLeft:10}}>{this.strings.vouchNo}</Text></View>
                                 </View>
 

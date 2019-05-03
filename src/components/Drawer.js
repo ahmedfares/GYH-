@@ -31,7 +31,7 @@ export default class App extends Component<{}> {
             <ImageBackground
               source={require('../images/topDrawer.jpg')} resizeMode='cover' style={[styles2.backgroundImage]}>
                 <View style={{alignItems:'center'}}>
-                <View style={{width:270,height:60,marginBottom:10}}><Image  source={{uri: user.Image}} style={{width:'100%',height:'100%',marginTop:10}}/></View>
+                <View style={{width:60,height:60,marginBottom:10}}><Image  source={{uri: user.Image}} style={{width:'100%',height:'100%',marginTop:10,borderRadius:30}}/></View>
                 <Text style={{ color: 'white',marginTop:5 }}>{(user.lang == 'ar')?user.ARName:user.ENName}</Text>
                 </View>
             </ImageBackground> 
@@ -116,7 +116,7 @@ export default class App extends Component<{}> {
         { text: this.strings.cancel, onPress: () => { }, style: "cancel" },
         {
           text: this.strings.logoutPage, onPress: () => {
-            this.props.navigation.navigate(LoginScreen);
+            user.loggedOut = true;
             try {
               AsyncStorage.removeItem('token');
               AsyncStorage.removeItem('email');
@@ -124,6 +124,7 @@ export default class App extends Component<{}> {
               AsyncStorage.removeItem('mobile');
               AsyncStorage.removeItem('address');
               AsyncStorage.removeItem('uid');
+              this.props.navigation.navigate(LoginScreen);
             } catch (error) {
               // Error saving data
             }
