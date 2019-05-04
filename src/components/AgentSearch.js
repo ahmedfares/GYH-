@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Keyboard,
-    AsyncStorage, ImageBackground, ActivityIndicator, Share, StatusBar
+    AsyncStorage, ImageBackground, ActivityIndicator, Share, StatusBar 
 } from 'react-native';
 import { Container, Footer, FooterTab, Content, Icon, Input, Item, Label } from 'native-base';
 import { Mo3tamerDetailsScreen,AgentListScreen } from '../ScreenNames/ScreenNames';
@@ -45,11 +45,31 @@ export default class AgentSearchScreen extends Component<{}> {
     }
     async loadLookups() {
 
-        const lookups = await ajax.getUpdatedStatLookups("2017-03-21");
-        this.setState({loading:false});
-        this.setState({ countriesData: lookups.Countries });
-        this.setState({ agentsData: lookups.Agents });
-        this.setState({ yearsData: lookups.Years });
+        let exists = await AsyncStorage.getItem('existLookup');
+        if (exists != 'true')
+        {
+            const lookups = await ajax.getUpdatedStatLookups("2017-03-21");
+            this.setState({loading:false});
+            this.setState({ countriesData: lookups.Countries });
+            this.setState({ agentsData: lookups.Agents });
+            this.setState({ yearsData: lookups.Years });
+            await AsyncStorage.setItem('Countries',JSON.stringify(lookups.Countries));
+            await AsyncStorage.setItem('Agents',JSON.stringify(lookups.Agents));
+            await AsyncStorage.setItem('Years',JSON.stringify(lookups.Years));
+            await AsyncStorage.setItem('existLookup','true');
+            alert('X');
+        }
+        else
+        {
+            alert('Y');
+            let countries = await AsyncStorage.getItem('Countries');
+            let agents = await AsyncStorage.getItem('Agents');
+            let years = await AsyncStorage.getItem('Years');
+            this.setState({loading:false});
+            this.setState({ countriesData: JSON.parse(countries) });
+            this.setState({ agentsData: JSON.parse(agents) });
+            this.setState({ yearsData: JSON.parse(years) });
+        }
 
         for (let i = 0; i < this.state.countriesData.length; i++) {
             this.state.countriesData[i].value = "Choose Year";
@@ -154,7 +174,7 @@ export default class AgentSearchScreen extends Component<{}> {
         return (
             <Container>
                 <Content scrollEnabled={false}> 
-                    {!this.state.loading && <View style={{marginTop:100,marginBottom:100}}>
+                    {!this.state.loading && <View style={{marginTop:100,marginBottom:0}}>
                         <View style={{ paddingHorizontal: 10,marginBottom:10 }}>
                             <Dropdown label={this.strings.Year}  itemCount={5}
                                 onChangeText={(selectedYear) => { this.setState({ selectedYear });this.changeYear(); }} 
@@ -275,7 +295,7 @@ export default class AgentSearchScreen extends Component<{}> {
                         
                         </View>
                     </View>}
-                    <ActivityIndicator animating={this.state.loading} style={{ marginTop: 400 }} color="#1E4276" size="large" />
+                    {this.state.loading && <ActivityIndicator animating={this.state.loading} style={{ marginTop: 400 }} color="#1E4276" size="large" />}
                     <Toast
                             ref="toast"
                             style={{ backgroundColor: '#1E4276' }}

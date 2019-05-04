@@ -22,7 +22,8 @@ class TafweejItem extends React.Component {
                     <View style={{ flex: 1,marginBottom:10,marginTop:10,borderRightWidth:1,borderRightColor:'#aaa', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                         <View>
                             {(deal.TravelType == 1) && <Image style={{ height: 40, width: 40 }} source={require('../images/Air.png')} />}
-                            {(deal.TravelType > 1) && <Image style={{ height: 40, width: 40 }} source={require('../images/Land.png')} />}
+                            {(deal.TravelType == 2) && <Image style={{ height: 40, width: 40 }} source={require('../images/Land.png')} />}
+                            {(deal.TravelType == 3) && <Image style={{ height: 40, width: 40 }} source={require('../images/Boat.png')} />}
                         </View>
                     </View>
                 </View>

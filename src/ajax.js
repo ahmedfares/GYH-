@@ -57,7 +57,7 @@ export default {
         console.error(error);
       }
 },
-async fetchDetailedTafweej (Id,pageNo){
+async fetchDetailedTafweej (Id,pageNo,lang){
   let token2 = await AsyncStorage.getItem('token');
   try {
       let response = await fetch('https://eumra.com/gyh/api/gyh/GetTafweejs', {
@@ -68,7 +68,8 @@ async fetchDetailedTafweej (Id,pageNo){
         },
         body: JSON.stringify({
           StatusId:Id,
-          PageId:pageNo
+          PageId:pageNo,
+          isArabic:lang
         }) 
     });
       let responseJson = await response.json();
@@ -258,7 +259,7 @@ async fetchDetailedAgent(pageNo,lang,AgentYear,AgentCountry,AgentId){
         },
         body: JSON.stringify({
           "PageId": pageNo,
-          "isArabic":lang,
+          "Language":(lang)?"Ar":"English",
           "PageLength": 20,
           "Year": AgentYear,
           "CountryId": AgentCountry,

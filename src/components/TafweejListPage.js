@@ -40,7 +40,7 @@ export default class TafweejListScreen extends Component<{}> {
     state = { deals: [],totalCnt:52348 };
     async componentDidMount() {
         this.props.navigation.setParams({ handleSearch: () => this.searchContents() })
-        const deals = await ajax.fetchDetailedTafweej(user.selectedTafweej,1);
+        const deals = await ajax.fetchDetailedTafweej(user.selectedTafweej,1,(user.lang == 'ar'));
         user.lastPageTafweej = deals.lastPage;
         user.totalGroupsCount = deals.TotalCount;
         this.setState({totalCnt: deals.TotalCount});

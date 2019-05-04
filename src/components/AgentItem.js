@@ -30,7 +30,7 @@ class AgentItem extends React.Component {
                         <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
                             <View style={{ flex: 0.2 }}><Image source={require('../images/icon-01.png')} style={{ width: 25, height: 25, padding: 5, marginLeft: 5,marginTop:7 }} /></View>
                             <View style={{ flex: 0.51 }}><Text style={{ textAlign: 'left', marginLeft: 10,marginTop:10,color:'#204677',fontSize:11 }}>{this.strings.Sejel}</Text></View>
-                            <View style={{ flex: 0.29 }}><Text style={{ textAlign: 'left', marginLeft: 10,marginTop:10,fontSize:11 }}>{deal.AgentSejelId}</Text></View>
+                            <View style={{ flex: 0.29 }}><Text style={{ textAlign: 'left', marginLeft: 10,marginTop:10,fontSize: 9}}>{deal.AgentSejelId}</Text></View>
                         </View> 
                         <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
                             <View style={{ flex: 0.2 }}><Image source={require('../images/icon-09.png')} style={{ width: 25, height: 25, padding: 5, marginLeft: 5,marginTop:7 }} /></View>
@@ -51,7 +51,7 @@ class AgentItem extends React.Component {
                         <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
                             <View style={{ flex: 0.17 }}><Image source={require('../images/icon-05.png')} style={{ width: 25, height: 25, padding: 5, marginLeft: 5,marginTop:7 }} /></View>
                             <View style={{ flex: 0.46 }}><Text style={{ textAlign: 'left', marginLeft: 10,marginTop:10,color:'#204677',fontSize:11 }}>{this.strings.IataNo}</Text></View>
-                            <View style={{ flex: 0.37 }}><Text style={{ textAlign: 'left',marginTop:10,fontSize:10 }}>{deal.IataNumber}</Text></View>
+                            <View style={{ flex: 0.37 }}><Text style={{ textAlign: 'left',marginTop:10,fontSize:9 }}>{deal.IataNumber}</Text></View>
                         </View> 
                         <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
                             <View style={{ flex: 0.17 }}><Image source={require('../images/icon-08.png')} style={{ width: 25, height: 25, padding: 5, marginLeft: 5,marginTop:7 }} /></View>

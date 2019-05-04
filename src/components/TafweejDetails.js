@@ -18,6 +18,7 @@ export default class TafweejDetailsScreen extends Component<{}> {
         this.state = { showLoading: true, fieldLoading: true, AccordionKey: -1 };
         this.ExpandedItem = 0;
         this.dataArray = [];
+        this.dataArray2 = [];
         this.fieldArray = [];
         this.loadedViews = [];
         this.loadedViews = [{}];
@@ -199,6 +200,8 @@ export default class TafweejDetailsScreen extends Component<{}> {
         this.setState({ showLoading: false });
         this.dataArray = [
             { title: this.strings.tafougPage, iconName: "people" },
+        ];
+        this.dataArray2 = [
             { title: this.strings.Bus, iconName: "bus" },
         ];
     }
@@ -221,7 +224,9 @@ export default class TafweejDetailsScreen extends Component<{}> {
                     <Header androidStatusBarColor="#183B65" style={{ display: 'none' }} />
 
                     <Content style={{ borderBottomColor: '#FFF' }}>
-                        {!this.state.showLoading && <Accordion
+                        {!this.state.showLoading && 
+                        
+                        <Accordion
                             dataArray={this.dataArray}
                             animation={true}
                             key={this.state.AccordionKey}
@@ -229,6 +234,15 @@ export default class TafweejDetailsScreen extends Component<{}> {
                             renderContent={this._renderContent}
                             expanded={this.ExpandedItem}
                         />}
+                        {!this.state.showLoading && <Accordion
+                            dataArray={this.dataArray2}
+                            animation={true}
+                            key={this.state.AccordionKey}
+                            renderHeader={this._renderHeader}
+                            renderContent={this._renderContent}
+                            expanded={this.ExpandedItem}
+                        />
+                        }
                     </Content>
                 </Container>
         );

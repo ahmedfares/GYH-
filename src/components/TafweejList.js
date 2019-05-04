@@ -46,7 +46,7 @@ class TafweejList extends  React.Component {
     }
     makeRemoteRequest = async () => {
          //alert(this.state.Page);
-            const deals = await ajax.fetchDetailedTafweej(user.selectedTafweej, this.state.Page);
+            const deals = await ajax.fetchDetailedTafweej(user.selectedTafweej, this.state.Page,(user.lang == 'ar'));
                 
                 user.lastPageTafweej = deals.lastPage;
            
@@ -61,7 +61,7 @@ class TafweejList extends  React.Component {
         //alert(JSON.stringify(this.FlatListData.length,null,4));
     }
     async getApiData(){
-        const deals = await ajax.fetchDetailedTafweej(user.selectedTafweej, 1);
+        const deals = await ajax.fetchDetailedTafweej(user.selectedTafweej, 1,(user.lang == 'ar'));
         for (var i = 0; i < deals.Tafweejs.length; i++) {
             deals.Tafweejs[i].key = deals.Tafweejs[i].Id + "";
         }
