@@ -46,46 +46,54 @@ export default class AgentSearchScreen extends Component<{}> {
     async loadLookups() {
 
         let exists = await AsyncStorage.getItem('existLookup');
-        if (exists != 'true')
-        {
-            const lookups = await ajax.getUpdatedStatLookups("2017-03-21");
-            this.setState({loading:false});
-            this.setState({ countriesData: lookups.Countries });
-            this.setState({ agentsData: lookups.Agents });
-            this.setState({ yearsData: lookups.Years });
-            await AsyncStorage.setItem('Countries',JSON.stringify(lookups.Countries));
-            await AsyncStorage.setItem('Agents',JSON.stringify(lookups.Agents));
-            await AsyncStorage.setItem('Years',JSON.stringify(lookups.Years));
-            await AsyncStorage.setItem('existLookup','true');
-            alert('X');
-        }
-        else
-        {
-            alert('Y');
-            let countries = await AsyncStorage.getItem('Countries');
-            let agents = await AsyncStorage.getItem('Agents');
-            let years = await AsyncStorage.getItem('Years');
-            this.setState({loading:false});
-            this.setState({ countriesData: JSON.parse(countries) });
-            this.setState({ agentsData: JSON.parse(agents) });
-            this.setState({ yearsData: JSON.parse(years) });
-        }
+        // if (exists != 'true')
+        // {
+        //     const lookups = await ajax.getUpdatedStatLookups("2017-03-21");
+        //     this.setState({loading:false});
+        //     this.setState({ countriesData: lookups.Countries });
+        //     this.setState({ agentsData: lookups.Agents });
+        //     this.setState({ yearsData: lookups.Years });
+        //     await AsyncStorage.setItem('Countries',JSON.stringify(lookups.Countries));
+        //     await AsyncStorage.setItem('Agents',JSON.stringify(lookups.Agents));
+        //     await AsyncStorage.setItem('Years',JSON.stringify(lookups.Years));
+        //     await AsyncStorage.setItem('existLookup','true');
+        //     alert('X');
+        // }
+        // else
+        // {
+        //     alert('Y');
+        //     let countries = await AsyncStorage.getItem('Countries');
+        //     let agents = await AsyncStorage.getItem('Agents');
+        //     let years = await AsyncStorage.getItem('Years');
+        //     this.setState({loading:false});
+        //     this.setState({ countriesData: JSON.parse(countries) });
+        //     this.setState({ agentsData: JSON.parse(agents) });
+        //     this.setState({ yearsData: JSON.parse(years) });
+        // }
 
+        const lookups = await ajax.getUpdatedStatLookups("2017-03-21");
+        this.setState({ countriesData: lookups.Countries });
+        this.setState({ agentsData: lookups.Agents });
+        this.setState({ yearsData: lookups.Years });
         for (let i = 0; i < this.state.countriesData.length; i++) {
             this.state.countriesData[i].value = "Choose Year";
             this.state.countriesData[i].name = "Choose Year";
         }
+        this.setState({countries:[]});
         this.state.countries.push({value:"Choose Year"})
         for (let i = 0; i < this.state.agentsData.length; i++) {
             this.state.agentsData[i].value = "Choose Country";
             this.state.agentsData[i].name = "Choose Country";
         }
+        this.setState({agents:[]});
         this.state.agents.push({value:"Choose Country"})
+        this.setState({years:[]});
         for (let i = 0; i < this.state.yearsData.length; i++) {
                 this.state.yearsData[i].value = this.state.yearsData[i].Id;
                 this.state.yearsData[i].name = this.state.yearsData[i].Id + "";
                 this.state.years.push(this.state.yearsData[i]);
         }
+        this.setState({ loading: false });
     }
     changeYear() {
         this.state.countries.length = 0;
@@ -97,13 +105,13 @@ export default class AgentSearchScreen extends Component<{}> {
             if (this.state.countriesData[i].Years.find(x=>x.Id == this.state.selectedYear) != null){
                 if (user.lang == 'ar')
                     {
-                        this.state.countriesData[i].value = this.state.countriesData[i].ArabicName;
-                        this.state.countriesData[i].name = this.state.countriesData[i].ArabicName;
+                        this.state.countriesData[i].value =this.state.countriesData[i].Id + '-'+ this.state.countriesData[i].ArabicName;
+                        this.state.countriesData[i].name = this.state.countriesData[i].Id + '-'+ this.state.countriesData[i].ArabicName;
                     }
                 else
                     {
-                        this.state.countriesData[i].value = this.state.countriesData[i].EnglishName;
-                        this.state.countriesData[i].name = this.state.countriesData[i].EnglishName;
+                        this.state.countriesData[i].value =this.state.countriesData[i].Id + '-'+ this.state.countriesData[i].EnglishName;
+                        this.state.countriesData[i].name = this.state.countriesData[i].Id + '-'+this.state.countriesData[i].EnglishName;
                     }
                 this.state.countries.push(this.state.countriesData[i]);
             }
@@ -116,13 +124,13 @@ export default class AgentSearchScreen extends Component<{}> {
             if (this.state.agentsData[i].CountryId == this.state.countries.find(x=>x.value == this.state.selectedCountry).Id){
                 if (user.lang == 'ar')
                     {
-                        this.state.agentsData[i].value = this.state.agentsData[i].ArabicName;
-                        this.state.agentsData[i].name = this.state.agentsData[i].ArabicName;
+                        this.state.agentsData[i].value =this.state.agentsData[i].Id +'-'+ this.state.agentsData[i].ArabicName;
+                        this.state.agentsData[i].name = this.state.agentsData[i].Id +'-'+this.state.agentsData[i].ArabicName;
                     }
                 else
                     {
-                        this.state.agentsData[i].value = this.state.agentsData[i].EnglishName;
-                        this.state.agentsData[i].name = this.state.agentsData[i].EnglishName;
+                        this.state.agentsData[i].value = this.state.agentsData[i].Id +'-'+this.state.agentsData[i].EnglishName;
+                        this.state.agentsData[i].name = this.state.agentsData[i].Id +'-'+this.state.agentsData[i].EnglishName;
                     }
                 this.state.agents.push(this.state.agentsData[i]);
             }

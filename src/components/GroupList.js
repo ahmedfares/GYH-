@@ -34,7 +34,7 @@ class GroupList extends React.Component {
                 deals.Groups[i].key = deals.Groups[i].Id + "";
             }
             this.FlatListData = [...this.FlatListData, ...deals.Groups];
-
+            this.props.onMore();
         this.setState({ isFetching: false });
 
 

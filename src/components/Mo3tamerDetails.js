@@ -17,7 +17,13 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
         this.strings.setLanguage(user.lang);
         this.state = { showLoading: true, fieldLoading: true, AccordionKey: -1 };
         this.ExpandedItem = 0;
-        this.dataArray = [];
+        this.dataArray = []; 
+        this.dataArray2 = []; 
+        this.dataArray3 = []; 
+        this.dataArray4 = []; 
+        this.dataArray5 = []; 
+        this.dataArray6 = []; 
+        this.dataArray7 = []; 
         this.fieldArray = [];
         this.loadedViews = [];
         this.loadedViews = [{}];
@@ -42,9 +48,26 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
         return (
             <View style={styles.accordionHeader2}>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                    {item.iconName != 'jet' && <Icon name={item.iconName} style={{ fontSize: 25, color: '#204677', flex: 0.1 }} />}
                     {item.iconName == 'jet' && <Image
-                            source={require('../images/Groups_17.png')} style={{ height: 30, width: 30, flex:0.1 }} />
+                            source={require('../images/MofaIcon.png')} style={{ height: 30, width: 30, flex:0.1 }} />
+                            }
+                    {item.iconName == 'person' && <Image
+                            source={require('../images/MutamerIcon.png')} style={{ height: 30, width: 30, flex:0.1 }} />
+                            }
+                            {item.iconName == 'people' && <Image
+                            source={require('../images/GroupIcon.png')} style={{ height: 30, width: 30, flex:0.1 }} />
+                            }
+                            {item.iconName == 'briefcase' && <Image
+                            source={require('../images/PackageIcon.png')} style={{ height: 30, width: 30, flex:0.1 }} />
+                            }
+                            {item.iconName == 'pin' && <Image
+                            source={require('../images/ArrivalIcon.png')} style={{ height: 30, width: 30, flex:0.1 }} />
+                            }
+                            {item.iconName == 'walk' && <Image
+                            source={require('../images/DepartureIcon.png')} style={{ height: 30, width: 30, flex:0.1 }} />
+                            }
+                            {item.iconName == 'globe' && <Image
+                            source={require('../images/OthersIcon.png')} style={{ height: 30, width: 30, flex:0.1 }} />
                             }
                     <Text style={{ fontSize: 17, color: '#204677', flex: 0.9 }}>
                         {" "}{item.title}
@@ -115,44 +138,51 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
                 <View  key={item.title}>
                 {(item.title == this.strings.Mutamer) && <View style={{padding:20,justifyContent:'center',alignItems:'center'}}>
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#8D8D8D',textAlign:'center' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/NumIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.ID} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.Id)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-person' android="md-person" style={{ fontSize: 20, color: '#8D8D8D',textAlign:'center'  }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/PersonIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Name} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.Name)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-calendar' android="md-calendar" style={{ fontSize: 20, color: '#8D8D8D',textAlign:'center'  }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/AgeIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Age} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.Age)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-card' android="md-card" style={{ fontSize: 20, color: '#8D8D8D',textAlign:'center'  }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/PassportIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Passport} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.PassportNo)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-globe' android="md-globe" style={{ fontSize: 20, color: '#8D8D8D',textAlign:'center'  }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/NationalIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Nationality} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.Nationality)}</Text></View>
                 </View>
             </View>}
             {(item.title == this.strings.Group) && <View style={{padding:20,justifyContent:'center',alignItems:'center'}}>
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/NumIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.ID} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.GroupNo)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-people' android="md-people" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/PersonIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Name} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.GroupName)}</Text></View>
                 </View>
@@ -160,25 +190,29 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
             </View>}
             {(item.title == this.strings.Mofa) && <View style={{padding:20,justifyContent:'center',alignItems:'center'}}>
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/NumIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.4 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.ID} </Text></View>
                     <View style={{ flex: 0.4 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.MofaNo)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-calendar' android="md-calendar" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/DateIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.4 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Date} </Text></View>
                     <View style={{ flex: 0.4 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.MofaDate)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-calendar' android="md-calendar" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/DateIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.4 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.VisaStampDate} </Text></View>
                     <View style={{ flex: 0.4 }}><Text style={{textAlign:'left'}}>{(user.Mutamer.VisaStampDate == 0)?this.strings.notArrived:this.replaceNoData(user.Mutamer.VisaStampDate)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/NumIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.4 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.VisaNumber} </Text></View>
                     <View style={{ flex: 0.4 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.VisaNumber)}</Text></View>
                 </View>
@@ -186,7 +220,8 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
             </View>}
             {(item.title == this.strings.Package) && <View style={{padding:20,justifyContent:'center',alignItems:'center'}}>
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/NumIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.ID} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.PackageId)}</Text></View>
                 </View>
@@ -194,19 +229,22 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
 
             {(item.title == this.strings.Arrival) && <View style={{padding:20,justifyContent:'center',alignItems:'center'}}>
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/NumIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.MoiNumber} </Text></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.MoiNo)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-pin' android="md-pin" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/DateIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Expected} </Text></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.ExpectedArrivalDate)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-pin' android="md-pin" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/DateIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Actual} </Text></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.ActualArrivalDate)}</Text></View>
                 </View>
@@ -215,13 +253,15 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
             {(item.title == this.strings.Departure) && <View style={{padding:20,justifyContent:'center',alignItems:'center'}}>
                 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-walk' android="md-walk" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/DateIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Expected} </Text></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.ExpectedDepartureDate)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-walk' android="md-walk" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/DateIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Actual} </Text></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.ActualDepartureDate)}</Text></View>
                 </View>
@@ -230,13 +270,15 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
             {(item.title == this.strings.Others) && <View style={{padding:20,justifyContent:'center',alignItems:'center'}}>
                 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-briefcase' android="md-briefcase" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/AgentIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}> {this.strings.Agent}</Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.AgentName)}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-globe' android="md-globe" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/CountryIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} /></View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Country} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{this.replaceNoData(user.Mutamer.CountryName)}</Text></View>
                 </View>
@@ -290,15 +332,14 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
     getViews = async () => {
 
         this.setState({ showLoading: false });
-        this.dataArray = [
-            { title: this.strings.Mutamer, iconName: "person" },
-            { title: this.strings.Group, iconName: "people" },
-            { title: this.strings.Mofa, iconName: "jet" },
-            { title: this.strings.Package, iconName: "briefcase" },
-            { title: this.strings.Arrival, iconName: "pin" },
-            { title: this.strings.Departure, iconName: "walk" },
-            { title: this.strings.Others, iconName: "globe" },
-        ];
+        this.dataArray = [{ title: this.strings.Mutamer, iconName: "person" }];
+        this.dataArray2 = [{ title: this.strings.Group, iconName: "people" }];
+        this.dataArray3 = [{ title: this.strings.Mofa, iconName: "jet" }];
+        this.dataArray4 = [{ title: this.strings.Package, iconName: "briefcase" }];
+        this.dataArray5 = [{ title: this.strings.Arrival, iconName: "pin" }];
+        this.dataArray6 = [{ title: this.strings.Departure, iconName: "walk" }];
+        this.dataArray7 = [{ title: this.strings.Others, iconName: "globe" }];
+
 
         //loadAllContents
         //this.loadedViews = [];
@@ -343,6 +384,54 @@ export default class Mo3tamerDetailsScreen extends Component<{}> {
                     </View>}
                         {!this.state.showLoading && <Accordion
                             dataArray={this.dataArray}
+                            animation={true}
+                            key={this.state.AccordionKey}
+                            renderHeader={this._renderHeader}
+                            renderContent={this._renderContent}
+                            expanded={this.ExpandedItem}
+                        />}
+                        {!this.state.showLoading && <Accordion
+                            dataArray={this.dataArray2}
+                            animation={true}
+                            key={this.state.AccordionKey}
+                            renderHeader={this._renderHeader}
+                            renderContent={this._renderContent}
+                            expanded={this.ExpandedItem}
+                        />}
+                        {!this.state.showLoading && <Accordion
+                            dataArray={this.dataArray3}
+                            animation={true}
+                            key={this.state.AccordionKey}
+                            renderHeader={this._renderHeader}
+                            renderContent={this._renderContent}
+                            expanded={this.ExpandedItem}
+                        />}
+                        {!this.state.showLoading && <Accordion
+                            dataArray={this.dataArray4}
+                            animation={true}
+                            key={this.state.AccordionKey}
+                            renderHeader={this._renderHeader}
+                            renderContent={this._renderContent}
+                            expanded={this.ExpandedItem}
+                        />}
+                        {!this.state.showLoading && <Accordion
+                            dataArray={this.dataArray5}
+                            animation={true}
+                            key={this.state.AccordionKey}
+                            renderHeader={this._renderHeader}
+                            renderContent={this._renderContent}
+                            expanded={this.ExpandedItem}
+                        />}
+                        {!this.state.showLoading && <Accordion
+                            dataArray={this.dataArray6}
+                            animation={true}
+                            key={this.state.AccordionKey}
+                            renderHeader={this._renderHeader}
+                            renderContent={this._renderContent}
+                            expanded={this.ExpandedItem}
+                        />}
+                        {!this.state.showLoading && <Accordion
+                            dataArray={this.dataArray7}
                             animation={true}
                             key={this.state.AccordionKey}
                             renderHeader={this._renderHeader}

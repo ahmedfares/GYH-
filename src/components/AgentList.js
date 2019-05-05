@@ -54,7 +54,7 @@ class AgentList extends  React.Component {
                 deals.Agents[i].key = deals.Agents[i].Id + "";
             }
             this.FlatListData = [...this.FlatListData, ...deals.Agents];
-
+            this.props.onMore();
         this.setState({ isFetching: false });
 
 

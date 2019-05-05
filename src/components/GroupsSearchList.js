@@ -38,7 +38,7 @@ export default class GroupsSearchListScreen extends Component<{}> {
         this.props.navigation.navigate(GroupSearchScreen);
       }
 
-    state = { deals: [],totalCnt:0 };
+    state = { deals: [],totalCnt:0,pageLength:20,MutamerCnt:20 };
     async componentDidMount() {
         const deals = await ajax.fetchSearchedGroups(-1,1,(user.lang == 'ar'),user.selectedGroupName,
             user.selectedGroupCountryId,user.selectedGroupAgentId);
@@ -55,21 +55,25 @@ export default class GroupsSearchListScreen extends Component<{}> {
     setCurrentDeal = (dealId) => {
         this.props.navigation.navigate(Mo3tamerDetailsScreen);
       };
+      updateCnt = () => {
+        this.setState({MutamerCnt:this.state.MutamerCnt+20});
+    }
     render() {
 
         return (
             <View style={styles.container}>
                 {(this.state.deals.Groups && this.state.deals.Groups.length > 0) ?
-                    (<GroupList deals={this.state.deals.Groups} onItemPress={this.setCurrentDeal}/>)
+                    (<GroupList deals={this.state.deals.Groups} onMore={this.updateCnt} onItemPress={this.setCurrentDeal}/>)
                     : (<View>
                       <ActivityIndicator animating={!this.state.deals.Groups} style={{ marginTop: 400 }} color="#1E4276" size="large" />
                   </View>)}
-                {/* {(this.state.deals.Groups && this.state.deals.Groups.length > 0) && <Footer>
-                    <FooterTab style={{backgroundColor:'#323232',justifyContent:'space-between'}}>
+                  {(this.state.deals.Groups && this.state.deals.Groups.length > 0) && <Footer>
+                    <FooterTab style={{backgroundColor:'#204677',justifyContent:'center',paddingTop:15}}>
                             <Text style={{color:'#fff',fontSize:16}}>{this.strings.totalCnt}</Text>
-                            <Text style={{color:'#fff',fontSize:16}}>{this.state.totalCnt}</Text>
+                            <Text style={{color:'#fff',fontSize:16}}> | </Text>
+                            <Text style={{color:'#fff',fontSize:16}}>{this.state.MutamerCnt} of {this.state.totalCnt}</Text>
                     </FooterTab>
-                </Footer>} */}
+                </Footer>}
             </View>
         );
     };

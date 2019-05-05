@@ -15,8 +15,11 @@ export default class AgentListScreen extends Component<{}> {
         super(props);
         this.strings = new LocalizedStrings(user.words);
         this.strings.setLanguage(user.lang);
+        this.state = {MutamerCnt:20};
     }
-
+    updateCnt = () => {
+        this.setState({MutamerCnt:this.state.MutamerCnt+20});
+    }
     static navigationOptions = ({ navigation }) => {
         const { state } = navigation
         return {
@@ -37,7 +40,7 @@ export default class AgentListScreen extends Component<{}> {
         this.props.navigation.navigate(TafweejSearchScreen);
       }
 
-    state = { deals: [],totalCnt:52348 };
+    state = { deals: [],totalCnt:52348,pageLength:20,MutamerCnt:20  };
     async componentDidMount() {
         this.props.navigation.setParams({ handleSearch: () => this.searchContents() })
         const deals = await ajax.fetchDetailedAgent(1,(user.lang == 'ar'),user.selectedAgentYear,user.selectedAgentCountry,user.selectedAgentId);
@@ -54,21 +57,25 @@ export default class AgentListScreen extends Component<{}> {
         //user.Tafweej = this.state.deals.Tafweejs.find(x=>x.Id == dealId);
         //this.props.navigation.navigate(TafweejDetailsScreen);
       };
+      updateCnt = () => {
+        this.setState({MutamerCnt:this.state.MutamerCnt+20});
+    }
     render() {
 
         return (
             <View style={styles.container}>
-                {(this.state.deals.Agents && this.state.deals.Agents.length > 0) ?
-                    (<AgentList deals={this.state.deals.Agents} onItemPress={this.setCurrentDeal}/>)
+                {(this.state.deals && this.state.deals.Agents && this.state.deals.Agents.length > 0) ?
+                    (<AgentList deals={this.state.deals.Agents}  onMore={this.updateCnt} onItemPress={this.setCurrentDeal}/>)
                     : (<View>
-                      <ActivityIndicator animating={!this.state.deals.Agents} style={{ marginTop: 400 }} color="#1E4276" size="large" />
+                      <ActivityIndicator animating={true} style={{ marginTop: 400 }} color="#1E4276" size="large" />
                   </View>)}
-                {/* {(this.state.deals.Tafweejs && this.state.deals.Tafweejs.length > 0) && <Footer>
-                    <FooterTab style={{backgroundColor:'#323232',justifyContent:'space-between'}}>
+                   {(this.state.deals && this.state.deals.Agents && this.state.deals.Agents.length > 0) && <Footer>
+                    <FooterTab style={{backgroundColor:'#204677',justifyContent:'center',paddingTop:15}}>
                             <Text style={{color:'#fff',fontSize:16}}>{this.strings.totalCnt}</Text>
-                            <Text style={{color:'#fff',fontSize:16}}>{this.state.totalCnt}</Text>
+                            <Text style={{color:'#fff',fontSize:16}}> | </Text>
+                            <Text style={{color:'#fff',fontSize:16}}>{this.state.MutamerCnt} of {this.state.totalCnt}</Text>
                     </FooterTab>
-                </Footer>} */}
+                </Footer>} 
             </View>
         );
     };

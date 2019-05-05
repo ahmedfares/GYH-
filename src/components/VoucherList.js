@@ -54,7 +54,7 @@ class VoucherList extends  React.Component {
                 deals.Vouchers[i].key = deals.Vouchers[i].Id + "";
             }
             this.FlatListData = [...this.FlatListData, ...deals.Vouchers];
-
+            this.props.onMore();
         this.setState({ isFetching: false });
 
 

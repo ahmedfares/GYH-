@@ -32,8 +32,11 @@ export default class DrawerItem extends Component<{}> {
               onPress={this.handlePress}
             >
           <View style={[styles2.itemContainerEN, (user.currentPage == this.props.screenName) ? { backgroundColor: '#274372' } : { backgroundColor: 'transparent' }]}>
-            {(user.currentPage == this.props.screenName) && <Image source={this.imageUrls[this.props.imgIndex]} style={{ width: 20, height: 20, padding: 5,marginLeft:50 }} />}
-            {(user.currentPage != this.props.screenName) && <Image source={this.imageSelectedUrls[this.props.imgIndex]} style={{ width: 20, height: 20, padding: 5,marginLeft:50 }} />}
+            {(user.currentPage == this.props.screenName) && (this.props.imgIndex > 0 && this.props.imgIndex < 7) && <Image source={this.imageUrls[this.props.imgIndex]} style={{ width: 30, height: 30, marginTop: -5,marginLeft:45 }} />}
+            {(user.currentPage != this.props.screenName) && (this.props.imgIndex > 0 && this.props.imgIndex < 7) && <Image source={this.imageSelectedUrls[this.props.imgIndex]} style={{ width: 30, height: 30, marginTop: -5,marginLeft:45 }} />}
+            {(user.currentPage == this.props.screenName) && (0 == this.props.imgIndex || this.props.imgIndex >= 7) && <Image source={this.imageUrls[this.props.imgIndex]} style={{ width: 20, height: 20, padding: 5,marginLeft:50 }} />}
+            {(user.currentPage != this.props.screenName) && (0 == this.props.imgIndex || this.props.imgIndex >= 7) && <Image source={this.imageSelectedUrls[this.props.imgIndex]} style={{ width: 20, height: 20, padding: 5,marginLeft:50 }} />}
+          
           </View>
               <Text style={styles2.menuItemTextEN}>{this.props.title}</Text>
               {(this.props.screenName == 'InboxScreen') && (user.unreadMsg > 0) &&

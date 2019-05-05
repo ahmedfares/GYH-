@@ -63,7 +63,7 @@ class GroupItem extends React.Component {
                                 <Image source={require('../images/MutamerAgent.png')} style={{ height: '100%', width: '100%' }} />
                             </View>
                             <View style={{ flex: 0.2 }}><Text style={{ color: '#204677', textAlign: 'left', marginLeft: 10 }}>{this.strings.Agent} </Text></View>
-                            <View style={{ flex: 0.7 }}><Text style={{ textAlign: 'left', marginLeft: 10 }}>{(deal.AgentName != null && deal.AgentName != '') ? deal.AgentName : this.strings.NoData}</Text></View>
+                            <View style={{ flex: 0.7 }}><Text style={{ textAlign: 'left', marginLeft: 10,fontSize:12 }}>{(deal.AgentName != null && deal.AgentName != '') ? deal.AgentName : this.strings.NoData}</Text></View>
                         </View>
 
                         <View style={{ flex: 1, flexDirection: 'row' }}>

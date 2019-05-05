@@ -50,26 +50,26 @@ export default class Mo3tamerSearchScreen extends Component<{}> {
         for (let i = 0; i < this.state.countriesData.length; i++) {
             if (user.lang == 'ar')
                 {
-                    this.state.countriesData[i].value = this.state.countriesData[i].ArabicName;
-                    this.state.countriesData[i].name = this.state.countriesData[i].ArabicName;
+                    this.state.countriesData[i].value = this.state.countriesData[i].Id +"-"+ this.state.countriesData[i].ArabicName;
+                    this.state.countriesData[i].name = this.state.countriesData[i].Id +"-"+this.state.countriesData[i].ArabicName;
                 }
             else
                 {
-                    this.state.countriesData[i].value = this.state.countriesData[i].EnglishName;
-                    this.state.countriesData[i].name = this.state.countriesData[i].EnglishName;
+                    this.state.countriesData[i].value = this.state.countriesData[i].Id +"-"+this.state.countriesData[i].EnglishName;
+                    this.state.countriesData[i].name = this.state.countriesData[i].Id +"-"+this.state.countriesData[i].EnglishName;
                 }
         }
 
         for (let i = 0; i < this.state.agentsData.length; i++) {
             if (user.lang == 'ar')
                 {
-                    this.state.agentsData[i].value = this.state.agentsData[i].ArabicName;
-                    this.state.agentsData[i].name = this.state.agentsData[i].ArabicName;
+                    this.state.agentsData[i].value = this.state.agentsData[i].Id +'-'+ this.state.agentsData[i].ArabicName;
+                    this.state.agentsData[i].name = this.state.agentsData[i].Id +'-'+this.state.agentsData[i].ArabicName;
                 }
             else
                {
-                this.state.agentsData[i].value = this.state.agentsData[i].EnglishName;
-                this.state.agentsData[i].name = this.state.agentsData[i].EnglishName;
+                this.state.agentsData[i].value = this.state.agentsData[i].Id +'-'+this.state.agentsData[i].EnglishName;
+                this.state.agentsData[i].name = this.state.agentsData[i].Id +'-'+this.state.agentsData[i].EnglishName;
                }
             this.state.agents.push(this.state.agentsData[i]);
         }
@@ -120,7 +120,19 @@ export default class Mo3tamerSearchScreen extends Component<{}> {
         this.setState({selectedAgent:""});
         this.setState({Mutamers:""});
     }
+    restrict = (event) => {
+        alert(event);
 
+        const regex = new RegExp("/^[^!-\\/:-@\\[-`{-~]+$/;");;
+        
+        const key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+        
+        event.preventDefault(); return false;
+        
+        }
+        
+        }
     render() {
 
         return (
@@ -134,7 +146,8 @@ export default class Mo3tamerSearchScreen extends Component<{}> {
                         </Item>
                         <Item style={styles.Input}>
                             <Input value={this.state.Passport} placeholder={this.strings.Passport} placeholderTextColor='#204677' color='#204677'
-                                onChangeText={(Passport) => { this.setState({ Passport }) }}
+                                onKeyPress={(e) => this.restrict(e)}
+                                onChangeText={(Passport) => {  this.setState({ Passport }) }}
                                 style={{ color: '#204677', marginLeft: 0,textAlign:'left' }} />
                         </Item>
                         <Item style={styles.Input}>
@@ -220,7 +233,7 @@ export default class Mo3tamerSearchScreen extends Component<{}> {
                             /> */}
                         </View> 
                         
-                            <View style={{flex:1,flexDirection:'row'}}>
+                            <View style={{flex:1,flexDirection:'row',marginTop:-20}}>
                             <View style={{flex:0.5}}>
                         <TouchableOpacity onPress={() => {
                                 this.resetSearch();

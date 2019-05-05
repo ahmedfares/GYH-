@@ -81,10 +81,11 @@ export default class Mo3tamereenListScreen extends Component<{}> {
                   </View>)}
                 {(this.state.deals.Mutamers && this.state.deals.Mutamers.length > 0) && <Footer>
                     <FooterTab style={{backgroundColor:'#204677',justifyContent:'center',paddingTop:15}}>
-                            <Text style={{color:'#fff',fontSize:16}}>{this.strings.totalCnt} | </Text>
+                            <Text style={{color:'#fff',fontSize:16}}>{this.strings.totalCnt}</Text>
+                            <Text style={{color:'#fff',fontSize:16}}> | </Text>
                             <Text style={{color:'#fff',fontSize:16}}>{this.state.MutamerCnt} of {this.state.totalCnt}</Text>
                     </FooterTab>
-                </Footer>} 
+                </Footer>}  
             </View>
         );
     };

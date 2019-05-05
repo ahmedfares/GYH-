@@ -18,6 +18,7 @@ export default class VoucherDetailsScreen extends Component<{}> {
         this.state = { showLoading: true, fieldLoading: true, AccordionKey: -1 };
         this.ExpandedItem = 0;
         this.dataArray = [];
+        this.dataArray2 = [];
         this.fieldArray = [];
         this.loadedViews = [];
         this.loadedViews = [{}];
@@ -42,7 +43,12 @@ export default class VoucherDetailsScreen extends Component<{}> {
         return (
             <View style={styles.accordionHeader2}>
                 <View style={{ flex: 1, flexDirection: 'row' }}>
-                    <Icon name={item.iconName} style={{ fontSize: 25, color: '#204677', flex: 0.1 }} />
+                {item.iconName == 'briefcase' && <Image
+                            source={require('../images/7.png')} style={{ height: 30, width: 30, flex:0.1 }} />
+                            }
+                            {item.iconName == 'globe' && <Image
+                            source={require('../images/OthersIcon.png')} style={{ height: 30, width: 30, flex:0.1 }} />
+                            }
                     <Text style={{ fontSize: 17, color: '#204677', flex: 0.9 }}>
                         {" "}{item.title}
                     </Text>
@@ -95,25 +101,36 @@ export default class VoucherDetailsScreen extends Component<{}> {
                 <View  key={item.title}>
                 {(item.title == this.strings.vouchPage) && <View style={{padding:20,justifyContent:'center',alignItems:'center'}}>
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#8D8D8D',textAlign:'center'  }}></Icon></View>
+                    <View style={{ flex: 0.1 }}>
+                    <Image
+                            source={require('../images/NumIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} />
+                            </View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.ID} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{user.Voucher.Id}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-briefcase' android="md-briefcase" style={{ fontSize: 20, color: '#8D8D8D',textAlign:'center'  }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/StatusIcon.jpg')} style={{ height: 25, width: 25, flex:0.1 }} />
+                    </View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Status} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{user.Voucher.Status}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-people' android="md-people" style={{ fontSize: 20, color: '#8D8D8D',textAlign:'center'  }}></Icon></View>
+                    <View style={{ flex: 0.1 }}>
+                    <Image
+                            source={require('../images/AgentIcon.png')} style={{ height: 25, width: 25, flex:0.1 }} />
+                    </View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Agent} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{user.Voucher.AgentName}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-trending-up' android="md-trending-up" style={{ fontSize: 20, color: '#8D8D8D',textAlign:'center'  }}></Icon></View>
+                    <View style={{ flex: 0.1 }}>
+                    <Image
+                            source={require('../images/AmountIcon.jpg')} style={{ height: 25, width: 25, flex:0.1 }} />
+                    </View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Amount} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{user.Voucher.TotalVoucherAmount}</Text></View>
                 </View>
@@ -121,25 +138,36 @@ export default class VoucherDetailsScreen extends Component<{}> {
             </View>}
             {(item.title == this.strings.Others) && <View style={{padding:20,justifyContent:'center',alignItems:'center'}}>
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-globe' android="md-globe" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}>
+                    <Image
+                            source={require('../images/CountryIcon.png')} style={{ height: 20, width: 20,marginLeft:3, flex:0.1 }} />
+                    </View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.Country} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{user.Voucher.CountryName}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-cash' android="md-cash" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}>
+                    <Image
+                            source={require('../images/BankIcon.jpg')} style={{ height: 25, width: 25, flex:0.1 }} />
+                    </View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.BankName} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{user.Voucher.BankName}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-pin' android="md-pin" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}><Image
+                            source={require('../images/BranchIcon.jpg')} style={{ height: 25, width: 25, flex:0.1 }} />
+                    </View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.BranchName} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{user.Voucher.BranchName}</Text></View>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingBottom: 5 }}>
-                    <View style={{ flex: 0.1 }}><Icon ios='ios-finger-print' android="md-finger-print" style={{ fontSize: 20, color: '#8D8D8D' }}></Icon></View>
+                    <View style={{ flex: 0.1 }}>
+                    <Image
+                            source={require('../images/SwitchIcon.jpg')} style={{ height: 25, width: 25, flex:0.1 }} />
+                    </View>
                     <View style={{ flex: 0.3 }}><Text style={{textAlign:'left',marginLeft:10}}>{this.strings.SwiftCode} </Text></View>
                     <View style={{ flex: 0.5 }}><Text style={{textAlign:'left'}}>{user.Voucher.SwiftCode}</Text></View>
                 </View>
@@ -194,6 +222,8 @@ export default class VoucherDetailsScreen extends Component<{}> {
         this.setState({ showLoading: false });
         this.dataArray = [
             { title: this.strings.vouchPage, iconName: "briefcase" },
+        ];
+        this.dataArray2 = [
             { title: this.strings.Others, iconName: "globe" },
         ];
     }
@@ -218,6 +248,14 @@ export default class VoucherDetailsScreen extends Component<{}> {
                     <Content style={{ borderBottomColor: '#FFF' }}>
                         {!this.state.showLoading && <Accordion
                             dataArray={this.dataArray}
+                            animation={true}
+                            key={this.state.AccordionKey}
+                            renderHeader={this._renderHeader}
+                            renderContent={this._renderContent}
+                            expanded={this.ExpandedItem}
+                        />}
+                        {!this.state.showLoading && <Accordion
+                            dataArray={this.dataArray2}
                             animation={true}
                             key={this.state.AccordionKey}
                             renderHeader={this._renderHeader}

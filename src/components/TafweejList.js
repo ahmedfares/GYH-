@@ -54,7 +54,7 @@ class TafweejList extends  React.Component {
                 deals.Tafweejs[i].key = deals.Tafweejs[i].Id + "";
             }
             this.FlatListData = [...this.FlatListData, ...deals.Tafweejs];
-
+            this.props.onMore();
         this.setState({ isFetching: false });
 
 

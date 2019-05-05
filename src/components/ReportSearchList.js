@@ -33,7 +33,7 @@ export default class ReportSearchListScreen extends Component<{}> {
         this.props.navigation.navigate(Mo3tamerSearchScreen);
       }
 
-    state = { deals: [],totalCnt:52348 };
+    state = { deals: [],totalCnt:52348,pageLength:20,MutamerCnt:20 };
     async componentDidMount() {
         //alert(user.selectedMutamer);
         const deals = await  ajax.fetchSearchedReports(-1, 1,(user.lang == 'ar'), user.selectedReportMutamer,
@@ -55,21 +55,25 @@ export default class ReportSearchListScreen extends Component<{}> {
         user.Mutamer = this.state.deals.ElmReport.find(x=>x.Id == dealId);
         //this.props.navigation.navigate(Mo3tamerDetailsScreen);
       };
+      updateCnt = () => {
+        this.setState({MutamerCnt:this.state.MutamerCnt+20});
+    }
     render() {
 
         return (
             <View style={styles.container}>
                 {(this.state.deals.ElmReport && this.state.deals.ElmReport.length > 0) ?
-                    (<ReportList deals={this.state.deals.ElmReport} type="Search" onItemPress={this.setCurrentDeal}/>)
+                    (<ReportList deals={this.state.deals.ElmReport} type="Search" onMore={this.updateCnt} onItemPress={this.setCurrentDeal}/>)
                     : (<View>
                       <ActivityIndicator animating={!this.state.deals.ElmReport} style={{ marginTop: 400 }} color="#1E4276" size="large" />
                   </View>)}
-                {/* {(this.state.deals.Mutamers && this.state.deals.Mutamers.length > 0) && <Footer>
-                    <FooterTab style={{backgroundColor:'#323232',justifyContent:'space-between'}}>
+                  {(this.state.deals.ElmReport && this.state.deals.ElmReport.length > 0) && <Footer>
+                    <FooterTab style={{backgroundColor:'#204677',justifyContent:'center',paddingTop:15}}>
                             <Text style={{color:'#fff',fontSize:16}}>{this.strings.totalCnt}</Text>
-                            <Text style={{color:'#fff',fontSize:16}}>{this.state.totalCnt}</Text>
+                            <Text style={{color:'#fff',fontSize:16}}> | </Text>
+                            <Text style={{color:'#fff',fontSize:16}}>{this.state.MutamerCnt} of {this.state.totalCnt}</Text>
                     </FooterTab>
-                </Footer>} */}
+                </Footer>}
             </View>
         );
     };
